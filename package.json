@@ -1,0 +1,23 @@
+{
+  "name": "Software-Security-SPA-with-OAtuh",
+  "version": "1.0.0",
+  "description": "This is the second assignment of the module \"Software Security\" of MSc in Cyber Security in SLIIT. In this assignment contruction of the SPA is not focused. the focused area is OAuth implemtatio with the project and its behavior.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cheshanj/Software-Security-SPA-with-OAtuh.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cheshanj/Software-Security-SPA-with-OAtuh/issues"
+  },
+  "homepage": "https://github.com/cheshanj/Software-Security-SPA-with-OAtuh#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
