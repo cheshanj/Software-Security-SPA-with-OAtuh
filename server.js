@@ -3,6 +3,8 @@ const path = require("path");
 
 const app = express();
 
+app.disable("etag");
+
 app.use("/static", express.static(path.resolve(__dirname,"Frontend", "static")));
 
 app.get("/*", (req,res) => {
