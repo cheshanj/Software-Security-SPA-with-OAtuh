@@ -1,4 +1,7 @@
 import Home from "./views/home.js";
+import Posts from "./views/posts.js";
+import About from "./views/About.js";
+import Not_Found from "./views/404.js";
 
 
 const navigateTo = url => {
@@ -12,9 +15,9 @@ const router = async () => {
 
     const routes = [
         { path: "/", view: Home },
-        { path: "/posts", view: () => console.log("this is posts!") },
-        { path: "/about", view: () => console.log("this is about!") },
-        { path: "/404", view: () => console.log("this is 404!") },
+        { path: "/posts", view: Posts },
+        { path: "/about", view: About },
+        { path: "/404", view: Not_Found },
 
     ];
 
@@ -37,7 +40,10 @@ const router = async () => {
             route: routes[3],
             isMatch: true
         };
+        
+      
     }
+
 
 const view = new match.route.view();
 

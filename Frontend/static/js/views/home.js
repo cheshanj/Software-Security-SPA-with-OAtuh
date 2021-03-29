@@ -16,6 +16,9 @@ export default class extends Abstract{
         
         <h1>welcome back</h1>
         
+        <p>
+        <a href="/posts" data-link> Go to posts</a>
+        </p>
         `;
     }
 }
