@@ -54,6 +54,12 @@ app.post('/login', (req, res) => {
         }).catch(console.error);
 })
 
+app.get('/*', checkAuthenticated, (req, res) => {
+    let user = req.user;
+    res.sendFile(path.resolve(__dirname, "Frontend", "index.html"));
+
+});
+
 app.get("/*", (req, res) => {
 
     res.sendFile(path.resolve(__dirname, "Frontend", "index.html"));
@@ -61,6 +67,37 @@ app.get("/*", (req, res) => {
 
 });
 
+app.get('/logout', (req, res) => {
+
+    res.clearCookie('session-token');
+    res.redirect('/login');
+});
+
+function checkAuthenticated(req, res, next) {
+
+    let token = req.cookies['session-token'];
+
+    let user = {};
+    async function verify() {
+        const ticket = await client.verifyIdToken({
+            idToken: token,
+            audience: CLIENT_ID,  // Specify the CLIENT_ID of the app that accesses the backend
+        });
+        const payload = ticket.getPayload();
+        user.name = payload.name;
+        user.email = payload.email;
+        user.picture = payload.picture;
+    }
+    verify()
+        .then(() => {
+            req.user = user;
+            next();
+        })
+        .catch(err => {
+            res.redirect('/login')
+        })
+
+}
 
 app.listen(process.env.PORT || 4800, () => console.log("Server started and running!!"));
 
